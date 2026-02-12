@@ -1,8 +1,8 @@
 require("dotenv").config();
 
-const { connectDb } = require("./config/db");
+const connectDb = require("./config/db");
 const { initCloudinary } = require("./config/cloudinary");
-const { createApp } = require("./app");
+const createApp = require("./app");
 
 async function boostrap() {
     await connectDb();
