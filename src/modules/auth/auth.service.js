@@ -1,7 +1,7 @@
 const bcrypt = require('bcrypt');
 const jwt = require('jsonwebtoken');
 const User = require('../users/user.model');
-const { ApiError } = require('../../utils/apiError');
+const ApiError = require('../../utils/apiError');
 
 const register = async (name, email, password) => {
     if (!name || !email || !password) throw new ApiError(400, 'Name, email and password are required');
