@@ -2,7 +2,7 @@ require("express-async-errors");
 const express = require('express');
 const cors = require('cors'); // Cors sirve para permitir solicitudes entre diferentes dominios
 
-const { errorMiddleware } = require('./middleware/error.middleware');
+const errorMiddleware = require('./middleware/error.middleware');
 
 const authRoutes = require('./modules/auth/auth.routes');
 const usersRoutes = require('./modules/users/users.routes');
@@ -19,9 +19,9 @@ function createApp() {
     // Routes
     const path = 'api/v1';
     app.use(`/${path}/auth`, authRoutes);
-    app.use(`/${path}/users`, usersRoutes);
-    app.use(`/${path}/listings`, listingsRoutes);
-    app.use(`/${path}/bookings`, bookingsRoutes);
+    //app.use(`/${path}/users`, usersRoutes);
+    //app.use(`/${path}/listings`, listingsRoutes);
+    //app.use(`/${path}/bookings`, bookingsRoutes);
 
     app.use(errorMiddleware);
 
