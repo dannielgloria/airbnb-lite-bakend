@@ -19,7 +19,7 @@ function createApp() {
     // Routes
     const path = 'api/v1';
     app.use(`/${path}/auth`, authRoutes);
-    //app.use(`/${path}/users`, usersRoutes);
+    app.use(`/${path}/users`, usersRoutes);
     //app.use(`/${path}/listings`, listingsRoutes);
     //app.use(`/${path}/bookings`, bookingsRoutes);
 
