@@ -1,5 +1,5 @@
 const User = require('./user.model');
-const ApiError = require('../../utils/apiError');
+const ApiError = require('../../utils/ApiError');
 const bcrypt = require('bcrypt');
 
 const updateMe = async (userId, updateData) => {

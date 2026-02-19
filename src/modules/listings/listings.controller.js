@@ -9,7 +9,7 @@ const upload = multer({
     limits: { files: 5, fileSize: 5 * 1024 * 1024 }, // 5MB limit
     fileFilter: (req, file, cb) => {
         const allowedTypes = ['image/jpeg', 'image/png', 'image/webp'].includes(file.mimetype);
-        cb(ok ? null : new ApiError(400, 'Invalid file type'), allowedTypes); 
+        cb(allowedTypes ? null : new ApiError(400, 'Invalid file type'), allowedTypes); 
     }
 });
 
@@ -29,7 +29,7 @@ const uploadBufferToCloudinary = (buffer) => {
 }
 
 const create = async (req, res) => {
-    const listing = await listingsService.create(req.user.sub, req.body);
+    const listing = await listingsService.createListing(req.user.sub, req.body);
     res.status(201).json(listing);
 }
 
@@ -57,7 +57,7 @@ const uploadPhotos = async (req, res) => {
     if (!req.files || req.files.length === 0) throw new ApiError(400, "No photos uploaded");
 
     const uploads = await Promise.all(
-        files.map(async (f) => {
+        req.files.map(async (f) => {
             const result = await uploadBufferToCloudinary(f.buffer);
             return { url: result.secure_url, publicId: result.public_id };
         })
