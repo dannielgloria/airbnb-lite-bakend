@@ -21,7 +21,7 @@ function createApp() {
     app.use(`/${path}/auth`, authRoutes);
     app.use(`/${path}/users`, usersRoutes);
     app.use(`/${path}/listings`, listingsRoutes);
-    //app.use(`/${path}/bookings`, bookingsRoutes);
+    app.use(`/${path}/bookings`, bookingsRoutes);
 
     app.use(errorMiddleware);
 
